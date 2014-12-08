@@ -1,11 +1,11 @@
 Summary:	Library integrating clutter with GStreamer
 Summary(pl.UTF-8):	Biblioteka integrująca clutter z GStreamerem
-Name:		clutter-gst
+Name:		clutter-gst2
 Version:	2.0.12
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/clutter-gst/2.0/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/clutter-gst/2.0/clutter-gst-%{version}.tar.xz
 # Source0-md5:	3e845093843166001e65e1e4971c1588
 URL:		http://www.clutter-project.org/
 BuildRequires:	autoconf >= 2.53
@@ -29,6 +29,7 @@ Requires:	cogl >= 1.10.0
 Requires:	glib2 >= 1:2.28.0
 Requires:	gstreamer >= 1.2.0
 Requires:	gstreamer-plugins-base >= 1.2.0
+Obsoletes:	clutter-gst < 2.0.12-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,8 +39,8 @@ Library integrating clutter with GStreamer.
 Biblioteka integrująca clutter z GStreamerem.
 
 %package devel
-Summary:	Header files for clutter-gst library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki clutter-gst
+Summary:	Header files for clutter-gst 2 library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki clutter-gst 2
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	clutter-devel >= 1.6.0
@@ -47,42 +48,45 @@ Requires:	cogl-devel >= 1.10.0
 Requires:	glib2-devel >= 1:2.28.0
 Requires:	gstreamer-devel >= 1.2.0
 Requires:	gstreamer-plugins-base-devel >= 1.2.0
+Obsoletes:	clutter-gst-devel < 2.0.12-2
 
 %description devel
-Header files for clutter-gst library.
+Header files for clutter-gst 2 library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki clutter-gst.
+Pliki nagłówkowe biblioteki clutter-gst 2.
 
 %package static
-Summary:	Static clutter-gst library
-Summary(pl.UTF-8):	Statyczna biblioteka clutter-gst
+Summary:	Static clutter-gst 2 library
+Summary(pl.UTF-8):	Statyczna biblioteka clutter-gst 2
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	clutter-gst-static < 2.0.12-2
 
 %description static
-Static clutter-gst library.
+Static clutter-gst 2 library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka clutter-gst.
+Statyczna biblioteka clutter-gst 2.
 
 %package apidocs
-Summary:	clutter-gst API documentation
-Summary(pl.UTF-8):	Dokumentacja API clutter-gst
+Summary:	clutter-gst 2 API documentation
+Summary(pl.UTF-8):	Dokumentacja API clutter-gst 2
 Group:		Documentation
 Requires:	gtk-doc-common
+Obsoletes:	clutter-gst-apidocs < 2.0.12-2
 %if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
 %endif
 
 %description apidocs
-clutter-gst API documentation.
+clutter-gst 2 API documentation.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API clutter-gst.
+Dokumentacja API clutter-gst 2.
 
 %prep
-%setup -q
+%setup -q -n clutter-gst-%{version}
 
 %build
 %{__gtkdocize}
@@ -135,4 +139,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/%{name}
+%{_gtkdocdir}/clutter-gst
