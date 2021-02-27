@@ -75,9 +75,7 @@ Summary(pl.UTF-8):	Dokumentacja API clutter-gst 2
 Group:		Documentation
 Requires:	gtk-doc-common
 Obsoletes:	clutter-gst-apidocs < 2.0.12-2
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 clutter-gst 2 API documentation.
