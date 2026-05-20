@@ -1,0 +1,11 @@
+--- clutter-gst-2.0.18/clutter-gst/clutter-gst-player.c.orig
++++ clutter-gst-2.0.18/clutter-gst/clutter-gst-player.c
+@@ -1034,7 +1034,7 @@
+       priv->buffer_fill = 0.0;
+       g_object_notify (G_OBJECT (player), "buffer-fill");
+ 
+-      priv->download_buffering_element = g_object_ref (message->src);
++      priv->download_buffering_element = GST_ELEMENT (g_object_ref (message->src));
+       priv->in_download_buffering = TRUE;
+       priv->virtual_stream_buffer_signalled = 0;
+       break;

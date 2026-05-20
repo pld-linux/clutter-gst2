@@ -1,0 +1,22 @@
+--- clutter-gst-2.0.18/clutter-gst/Makefile.am.orig
++++ clutter-gst-2.0.18/clutter-gst/Makefile.am
+@@ -142,7 +142,7 @@
+ 		--include=GstVideo-1.0 \
+ 		--add-include-path=`$(PKG_CONFIG) --variable=girdir gstreamer-audio-1.0` \
+ 		--include=GstAudio-1.0 \
+-		--add-init-section="gst_init(0,NULL);" \
++		--add-init-section="extern void gst_init(int*,char**); gst_init(NULL,NULL);" \
+ 		--library=libclutter-gst-@CLUTTER_GST_API_VERSION@.la \
+ 		--libtool="${LIBTOOL}" \
+ 		--output $@ \
+--- clutter-gst-2.0.18/doc/reference/Makefile.am.orig
++++ clutter-gst-2.0.18/doc/reference/Makefile.am
+@@ -22,7 +22,7 @@
+ DOC_SOURCE_DIR=../../clutter-gst
+ 
+ # Extra options to pass to gtkdoc-scangobj. Not normally needed.
+-SCANGOBJ_OPTIONS=--type-init-func="clutter_gst_init(0,0)"
++SCANGOBJ_OPTIONS=--type-init-func="extern void clutter_gst_init(int*,char**); clutter_gst_init(0,0)"
+ 
+ # Extra options to supply to gtkdoc-scan.
+ # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED" 
